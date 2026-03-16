@@ -16,13 +16,13 @@ function render(variables = {}) {
 
       <img src="${variables.avatarURL}" class="photo" />
 
-      <h1>${variables.name || ""} ${variables.lastName || ""}</h1>
+      <h1>${variables.name || "Name"} ${variables.lastName || "LastName"}</h1>
 
-      <h2>${variables.role || ""}</h2>
+      <h2>${variables.role || "Role"}</h2>
 
       <h3>
-        ${variables.city || ""}
-        ${variables.country ? ", " + variables.country : ""}
+        ${variables.city || "City"}
+        ${variables.country ? "Country" + variables.country : "Country"}
       </h3>
 
       <ul class="${variables.socialMediaPosition}">
