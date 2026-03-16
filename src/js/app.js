@@ -78,12 +78,17 @@ function render(variables = {}) {
  */
 window.onload = function() {
   window.variables = {
+    // if includeCover is true the algorithm should show the cover image
     includeCover: true,
+    // this is the image's url that will be used as a background for the profile cover
     background:
       "https://media.istockphoto.com/id/147486873/es/foto/de-hombre-calvo.jpg?s=612x612&w=0&k=20&c=3wYblBxql9sEUk0DTQZHdwNyf5dWsLDctbKWOinDBKA=",
+    // this is the url for the profile avatar
     avatarURL:
       "https://hips.hearstapps.com/hmg-prod/images/bald-head-royalty-free-image-1599469569.jpg?crop=0.668xw:1.00xh;0.157xw,0&resize=640:*",
+    // social media bar position (position-left or position-right)
     socialMediaPosition: "position-right",
+    // social media usernames
     twitter: null,
     github: null,
     linkedin: null,
@@ -94,14 +99,13 @@ window.onload = function() {
     country: null,
     city: null
   };
-
-  render(window.variables);
+  render(window.variables); // render the card for the first time
 
   document.querySelectorAll(".picker").forEach(function(elm) {
     elm.addEventListener("change", function(e) {
-      const attribute = e.target.getAttribute("for");
+      // <- add a listener to every input
+      const attribute = e.target.getAttribute("for"); // when any input changes, collect the value
       let values = {};
-
       values[attribute] =
         this.value == "" || this.value == "null"
           ? null
@@ -110,8 +114,7 @@ window.onload = function() {
           : this.value == "false"
           ? false
           : this.value;
-
-      render(Object.assign(window.variables, values));
+      render(Object.assign(window.variables, values)); // render again the card with new values
     });
   });
 };
